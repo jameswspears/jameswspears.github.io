@@ -1,3 +1,3 @@
 # jameswspears.github.io
 
-A static page starter template.
+A starter template for a static webpage.
