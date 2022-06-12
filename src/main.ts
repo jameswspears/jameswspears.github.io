@@ -1,7 +1,6 @@
 // styles
 import "./styles/main.css";
 import "./styles/normalize.css";
-import "./styles/base.css";
 
 // scripts
 import "./scripts/scroller";
