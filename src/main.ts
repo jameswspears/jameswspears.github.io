@@ -1,10 +1,12 @@
 // styles
-import './styles/main.css';
-import './styles/normalize.css';
-import './styles/styles.css';
+import "./styles/main.css";
+import "./styles/normalize.css";
+import "./styles/base.css";
 
 // scripts
-import './scripts/scroller';
-import './scripts/typewriter';
-import './scripts/plugins';
-import './scripts/contact';
+import "./scripts/scroller";
+import "./scripts/typewriter";
+import "./scripts/plugins";
+import "./scripts/contact";
+
+if (typeof window !== "undefined") import("./pwa");
