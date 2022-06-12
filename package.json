@@ -1,11 +1,12 @@
 {
-  "name": "test",
+  "name": "jameswspears-github-io",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "start": "npm run build && npm run preview",
     "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "devDependencies": {
