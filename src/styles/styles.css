@@ -12836,17 +12836,11 @@ header.masthead .masthead-heading {
 }
 
 section#contact {
-  position: relative;
   background-color: #212529;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: -1000;
 }
 
 section > img {
-  position: absolute;
-  top: 0;
-  z-index: -100;
+  width: 100%;
 }
 
 section#contact .section-heading {
