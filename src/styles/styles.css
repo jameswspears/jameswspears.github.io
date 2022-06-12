@@ -12460,18 +12460,18 @@ header.masthead {
 header.masthead .masthead-subheading {
   font-size: 1.5rem;
   font-style: italic;
-  line-height: 1.5rem;
-  margin-bottom: 25px;
+  line-height: 1.75rem;
+  margin-bottom: 1rem;
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 header.masthead .masthead-heading {
-  font-size: 3.25rem;
+  font-size: 2.25rem;
   font-weight: 700;
-  line-height: 3.25rem;
-  margin-bottom: 2rem;
+  line-height: 2.25rem;
+  margin-bottom: 1.5rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -12491,14 +12491,14 @@ header.masthead .masthead-heading {
     font-size: 2.25rem;
     font-style: italic;
     line-height: 2.25rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   header.masthead .masthead-heading {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     font-weight: 700;
-    line-height: 4.5rem;
-    margin-bottom: 4rem;
+    line-height: 4rem;
+    margin-bottom: 3rem;
   }
 }
 

@@ -15,7 +15,7 @@ export function skills() {
     "AWS",
     "GCP",
   ];
-  const prefix = "Proficient with";
+  const prefix = "";
   let txt = prefix + " " + skills[j] + ".";
   const speed = 75;
   let showCursor = true;
