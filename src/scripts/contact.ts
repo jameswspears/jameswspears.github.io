@@ -13,9 +13,11 @@ export async function onClick(e: MouseEvent, grecaptcha: any) {
   console.log("click submit");
   e.preventDefault();
 
-  const name = document.forms.namedItem("contactForm")?.name;
-  const email = document.forms.namedItem("contactForm")?.email;
-  const message = document.forms.namedItem("contactForm")?.message;
+  const name = (<HTMLInputElement>document.getElementById("name")).value;
+  const email = (<HTMLInputElement>document.getElementById("email")).value;
+  const message = (<HTMLInputElement>document.getElementById("message")).value;
+
+  console.log(name, email, message);
 
   let errors = false;
   const nameErrors = document.getElementById("name-errors");

@@ -453,10 +453,10 @@
           </div>
         </div>
         <!-- Submit Button-->
-        <div class="text-center">
-          <div class="g-recaptcha" data-sitekey="6LflllYgAAAAALfJIJk_2LpNMUGe9mLG5E58oSYc" data-callback="reCaptcha"
-            data-size="invisible"></div>
-          <button onclick="onClick(event)" class="btn btn-primary btn-xl text-uppercase" id="submitButton"
+        <div class="text-center d-flex flex-column-reverse justify-content-center w-100 align-items-center">
+          <div class="g-recaptcha mt-4" data-sitekey="6LflllYgAAAAALfJIJk_2LpNMUGe9mLG5E58oSYc" data-callback="reCaptcha"
+          data-size="invisible" data-badge="inline"></div>
+          <button onclick="onClick(event, grecaptcha)" class="btn btn-primary btn-xl text-uppercase" style="width: 256px" id="submitButton"
             type="submit">
             Send Message
           </button>
@@ -774,8 +774,8 @@
     ga("set", "transport", "beacon");
     ga("send", "pageview");
   </script>
-  <script src="https://www.google-analytics.com/analytics.js" defer></script>
-  <script src="https://www.google.com/recaptcha/api.js" async></script>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
 
 </html>
