@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: functions
+Transform:
+- AWS::Serverless-2016-10-31
+Globals:
+  Function:
+    Tracing: Active
+  Api:
+    TracingEnabled: true
+Resources:
+  putItemFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/cjs/index.putItemHandler
+      Runtime: nodejs16.x
+      Architectures:
+      - arm64
+      MemorySize: 128
+      Timeout: 100
+      Description: A simple example includes a HTTP post method to add one item to
+        a DynamoDB table.
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /
+            Method: POST
+      CodeUri: putItemFunction
+    Metadata:
+      SamResourceId: putItemFunction
+Outputs:
+  WebEndpoint:
+    Description: API Gateway endpoint URL for Prod stage
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/

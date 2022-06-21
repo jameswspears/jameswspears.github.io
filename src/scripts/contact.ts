@@ -2,13 +2,14 @@ declare global {
   interface Window { onClick: any; reCaptcha: any; }
 }
 
+export const isValidEmail = (email: string) =>
+  String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+
 export async function onClick(e: MouseEvent, grecaptcha: any) {
-  const validEmail = (email: string) =>
-    String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
 
   console.log("click submit");
   e.preventDefault();
@@ -32,7 +33,7 @@ export async function onClick(e: MouseEvent, grecaptcha: any) {
 
   const emailErrors = document.getElementById("email-errors");
   if (emailErrors) {
-    if (!validEmail(email)) {
+    if (!isValidEmail(email)) {
       emailErrors.style.display = "block";
       errors = true;
     } else {
@@ -54,12 +55,12 @@ export async function onClick(e: MouseEvent, grecaptcha: any) {
     return;
   }
 
+  const reCaptcha = (token: string) => {
+    fetch('https://5dhrr6yge9.execute-api.us-east-1.amazonaws.com/Prod/', { method: 'POST', body: JSON.stringify({ name, email, message, token })});
+  }
+  window.reCaptcha = reCaptcha;
+
   grecaptcha.execute();
 }
 
-function reCaptcha(token: string) {
-  console.log("token", token);
-}
-
 window.onClick = onClick;
-window.reCaptcha = reCaptcha;
