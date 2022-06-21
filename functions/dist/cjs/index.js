@@ -49,7 +49,8 @@ function putItemHandler(event) {
             statusCode: 200,
             body: '{}',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
             }
         };
         if ((event === null || event === void 0 ? void 0 : event.httpMethod) !== 'POST') {

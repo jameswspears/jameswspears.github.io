@@ -27,7 +27,8 @@ export async function putItemHandler(event: APIGatewayEvent): Promise<APIGateway
         statusCode: 200,
         body: '{}',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
         }
     };
 
