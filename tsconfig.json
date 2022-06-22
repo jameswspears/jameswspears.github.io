@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDirs": ["./src", "./lib"],
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -19,5 +20,6 @@
       "vite-plugin-pwa/client"
     ]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["**/node_modules", "**/*.spec.ts"]
 }

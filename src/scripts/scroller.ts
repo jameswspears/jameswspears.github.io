@@ -1,3 +1,5 @@
+import { ScrollSpy } from 'bootstrap';
+
 declare global {
   interface Window {
     bootstrap: any;
@@ -28,7 +30,7 @@ export function scroller() {
     // Activate Bootstrap scrollspy on the main nav element
     const mainNav = document.body.querySelector("#mainNav");
     if (mainNav) {
-      new window.bootstrap.ScrollSpy(document.body, {
+      new ScrollSpy(document.body, {
         target: "#mainNav",
         offset: 74,
       });
