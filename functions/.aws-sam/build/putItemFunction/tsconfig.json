@@ -16,9 +16,7 @@
     "types": ["node"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "declaration": true,
-    "emitDeclarationOnly": true
   },
-  "include": ["src/**/*.ts", "src/index.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"]
 }

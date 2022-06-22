@@ -8,6 +8,8 @@
 import type { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import SES from 'aws-sdk/clients/ses';
 
+import isContact, { Contact } from '../validators/contact';
+
 const ses = new SES({ region: 'us-east-1' });
 
 export const isValidEmail = (email: string) =>
@@ -38,16 +40,9 @@ export async function putItemHandler(event: APIGatewayEvent): Promise<APIGateway
     }
 
     // Get fields from the body of the request
-    const body = JSON.parse(event?.body);
-    const token = body.token;
-    const name = body.name;
-    const email = body.email;
-    const message = body.message;
-
-    if (!token || typeof token !== 'string' ||
-        !name || typeof name !== 'string' ||
-        !email || typeof email !== 'string' || !isValidEmail(email) ||
-        !message || typeof message !== 'string') {
+    const body = JSON.parse(event?.body || '') as Contact;
+    console.info(body);
+    if (!isContact(body)) {
         response.statusCode = 400;
         return response;
     }
@@ -70,10 +65,10 @@ export async function putItemHandler(event: APIGatewayEvent): Promise<APIGateway
         },
         Message: {
             Body: {
-                Text: { Data: `${name} said: ${message}` },
+                Text: { Data: `${body.name} said: ${body.message}` },
             },
 
-            Subject: { Data: `Contact Form Submitted: ${email}` },
+            Subject: { Data: `Contact Form Submitted: ${body.email}` },
         },
         Source: "james.w.spears@gmail.com",
     };
