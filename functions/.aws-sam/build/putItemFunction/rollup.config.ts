@@ -11,8 +11,10 @@ export default [
       format: 'cjs',
       exports: 'named',
     },
+    inlineDynamicImports: true,
     plugins: [
       resolve({
+        preferBuiltins: true,
         extensions: ['.ts'],
       }),
       typescript(),

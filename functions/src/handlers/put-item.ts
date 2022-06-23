@@ -7,17 +7,11 @@
 
 import type { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import SES from 'aws-sdk/clients/ses';
+import fetch from 'node-fetch';
 
 import isContact, { Contact } from '../validators/contact';
 
 const ses = new SES({ region: 'us-east-1' });
-
-export const isValidEmail = (email: string) =>
-    String(email)
-        .toLowerCase()
-        .match(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        );
 
 /**
  * A simple example includes a HTTP post method to add one item to a DynamoDB table.
@@ -44,6 +38,21 @@ export async function putItemHandler(event: APIGatewayEvent): Promise<APIGateway
     console.info(body);
     if (!isContact(body)) {
         response.statusCode = 400;
+        return response;
+    }
+
+    const url = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${body.token}`;
+    try {
+        const result: any = await fetch(url, {
+            method: 'post'
+        })
+            .then(result => result.json());
+        if (!result?.success || result?.score < 0.75) {
+            response.statusCode = 403;
+            return response;
+        }
+    } catch (e) {
+        response.statusCode = 500;
         return response;
     }
 

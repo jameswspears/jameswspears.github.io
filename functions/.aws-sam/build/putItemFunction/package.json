@@ -6,6 +6,7 @@
     "dependencies": {
         "aws-lambda": "^1.0.7",
         "aws-sdk": "^2.799.0",
+        "node-fetch": "^3.2.6",
         "validator": "^13.7.0"
     },
     "devDependencies": {
@@ -28,6 +29,8 @@
     },
     "scripts": {
         "test": "jest --detectOpenHandles --coverage",
-        "build": "rollup -c rollup.config.ts && sam build"
+        "prebuild": "rollup -c rollup.config.ts",
+        "build": "sam build",
+        "dev": "sam local start-api --env-vars env.json"
     }
 }
