@@ -50,7 +50,7 @@ export async function onClick(e: MouseEvent, grecaptcha: any) {
   }
 
   const reCaptcha = (token: string) => {
-    fetch('https://5dhrr6yge9.execute-api.us-east-1.amazonaws.com/Prod/', { method: 'POST', body: JSON.stringify({ name, email, message, token })});
+    fetch(import.meta.env.VITE_LAMBDA_CONTACT, { method: 'POST', body: JSON.stringify({ name, email, message, token })});
   }
   window.reCaptcha = reCaptcha;
 

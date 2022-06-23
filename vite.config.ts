@@ -1,6 +1,7 @@
 // vite.config.js
 import { defineConfig } from 'vite';
-import { VitePWA } from 'vite-plugin-pwa'
+import { VitePWA } from 'vite-plugin-pwa';
+import {ViteEjsPlugin} from "vite-plugin-ejs";
 
 export default defineConfig({
   plugins: [
@@ -32,6 +33,10 @@ export default defineConfig({
           }
         ]
       }
-    })
+    }),
+    ViteEjsPlugin({
+      domain: "jameswspears.github.io",
+      title: "James' website"
+    }),
   ],
 });

@@ -4,3 +4,4 @@
 node_modules
 # dist // ignore dist if deploying to somewhere other than GitHub pages
 .cache
+.env
